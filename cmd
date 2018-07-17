@@ -1,3 +1,43 @@
+--
+  title: Azure Sphere CLI 
+  description: Overview of the AzSphere.exe CLI
+  author: jonathantims
+  ms.topic: conceptual
+  ms.date:  
+  ms.author: azure-sphere-writer
+  ms.prod: azure-sphere
+  ms.technology: azsphere.exe-CLI
+---
+# Overview
+
+This document contains reference material about the AzSphere.exe CLI needed to run cloud and device commands. Refer to *Azure Sphere Development CMD Prompt*, found in [Install Azure Sphere](qs-install-azure-sphere.md#Install Azure Sphere) from Quickstart to use the CLI.  
+
+- The **cutil** cloud utility provides commands that query or change the cloud service state.
+- The **dutil** device utility provides commands to query or change device state for an attached Azure Sphere device.
+- The **iutil** image utility packages an application image for sideloading or deployment to the Azure Sphere device.
+
+The **cutil** and **dutil** CLI supports a common syntax:
+
+   `utility-name command operation [flags]`
+
+In general, *command* is a noun and *operation* is a verb, so that the combination identifies both an action and the object of the action. Most commands and operations have both a full name and an abbreviation. For example, the **imageset** command is abbreviated **ims**.
+
+The **iutil** utility uses only a *command* and omits the *option*. None of the syntax elements are case-sensitive.
+
+Most *flags* have both a long name and an abbreviation. On the command line, introduce the long name with two hyphens and the abbreviation with a single hyphen. For example, the following two commands are equivalent:
+
+   ```sh
+   dutil wifi --ssid MyNetwork --key mynetworkkey
+   dutil wifi -s MyNetwork -k mynetworkkey
+   ```
+
+Some flags accept more than one value, such as a list of filenames. You can either specify the flag once for each item in the list, or you specify the flag only once and separate the values in the list with commas and no intervening spaces. For example, these two commands have the same effect:
+
+   ```sh
+   iutil package -i bin -o myimage.imagepackage -x approot/app -x approot/custom
+   iutil package -i bin -o myimage.imagepackage -x approot/app,approot/custom
+  ```
+
 ---
 uid: cutil
 ---
